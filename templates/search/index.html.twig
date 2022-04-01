@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SearchController!{% endblock %}
+
+ {% block titreh1 %}recherche Resultat de la recherche pour {{mot}}{% endblock %}
+
+{% block body %}
+    
+
+<div class="card-columns">
+    {% for game in games %}   
+    {{include ("game/_card.html.twig")}}
+    {% endfor %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+
+	<h2>Page d'accueil</h2>
+
+	<div class="card-columns">
+		{% for game in games %}
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">{{game.title}}</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Nombre de parties jouées :
+						{{ game.contests|length }}</h6>
+					<p class="card-text">
+						Entre
+						{{game.minPlayers}}
+						et
+						{{game.maxPlayers}}
+						joueurs
+					</p>
+
+					<p>
+						Ayant déjà joué :
+						{% for partie in game.contests %}
+							{% for joueur in partie.players %}
+								{{ joueur.nickname }}
+								|
+							{% endfor %}
+						{% endfor %}
+					</p>
+					<a href="{{ path('app_home_contest', {title: game.title}) }}" class="card-link">Commencer une partie</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+	<hr>
+
+	<p>Il y a
+		<strong>{{ nb_joueurs }}</strong>
+		joueurs inscrits dans la base de données.</p>
+	<ul>
+
+		<h2>Joueurs ayant déjà gagné une partie :
+		</h2>
+		{% for winner in winners %}
+			<li>{{winner.nickname}}
+				:
+				{{winner.email}}</li>
+
+		{% endfor %}
+	</ul>
+
+
+
+
+{% endblock %}
+
+{% block piedpage %}Footer de la page d'accueil
+{% endblock %}

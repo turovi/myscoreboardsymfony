@@ -1,0 +1,10 @@
+$primary : #1f366e;
+$danger : #5a0e21;
+$dark : #646464;
+
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: rgb(187, 196, 125);
+}
